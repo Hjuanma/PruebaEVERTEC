@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="false"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:customviews="clr-namespace:PruebaEVERTEC.Views.CustomViews"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="PruebaEVERTEC.Views.Pages.HomePage"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark},
+                                Light={StaticResource WindowBackgroundColor}}">
+    <ContentPage.Content>
+        <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Grid 
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.55}">
+
+                <ff:CachedImage
+                    Source="resource://PruebaEVERTEC.Resources.Images.istockphoto-1226886125-170667a.jpg"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Aspect="Fill"/>
+
+            </Grid>
+            <StackLayout
+                 Padding="40,0"
+                 Spacing="30"
+                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.56}"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.34}">
+
+
+                <StackLayout Orientation="Horizontal" Margin="-10,0">
+                    <Label Text="{xct:Translate config}" VerticalOptions="Center" Style="{StaticResource LabelLarge}" FontAttributes="Bold"/>
+                    <BoxView  HeightRequest="2" HorizontalOptions="FillAndExpand"  VerticalOptions="Center" Color="Gray"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{xct:Translate appTheme}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource LabelMedium}"/>
+                    <customviews:LabeledSwitch Title="Claro" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{xct:Translate changeLanguage}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource LabelMedium}"/>
+                    <Label VerticalOptions="Center" HorizontalOptions="EndAndExpand" Style="{StaticResource LabelMedium}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeLanguageCommand}"/>
+                        </Label.GestureRecognizers>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding SelectedLanguage.Localized}"/>
+                                <Span Text="      >"/>
+                            </FormattedString>
+
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+                <StackLayout Margin="0,20,0,0" VerticalOptions="Center" HorizontalOptions="Center" Orientation="Horizontal">
+
+                    <Label Text="{xct:Translate lastChange}" Style="{StaticResource LabelMedium}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="{Binding LastUpdate, StringFormat='{0: dd MMMM, yyyy}'}"  Style="{StaticResource LabelLarge}" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </StackLayout>
+
+            </StackLayout>
+
+            <Grid ColumnDefinitions="*,*" Style="{StaticResource BottomTab}"
+                  ColumnSpacing="0"
+                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.89}"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.11}">
+
+                <StackLayout Padding="40,10" Spacing="0">
+
+                    <ffimageloadingsvg:SvgCachedImage
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Aspect="AspectFit"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        Source="resource://PruebaEVERTEC.Resources.Icons.contacts-svgrepo-com.svg"/>
+
+
+                    <Label Text="{xct:Translate contacts}" VerticalOptions="Start" HorizontalOptions="Center" Style="{StaticResource LabelMedium}"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnContactsCommand}"/>
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Padding="40,10" Spacing="0">
+
+                    <ffimageloadingsvg:SvgCachedImage
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Aspect="AspectFit"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        Source="resource://PruebaEVERTEC.Resources.Icons.camera-outline.svg"/>
+
+
+                    <Label Text="{xct:Translate media}" VerticalOptions="Start" HorizontalOptions="Center" Style="{StaticResource LabelMedium}"/>
+
+                </StackLayout>
+
+
+            </Grid>
+
+
+            <pancakeview:PancakeView HeightRequest="100" WidthRequest="100" CornerRadius="40" BackgroundColor="{StaticResource primaryColor}"
+                                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.43}"
+                                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.85}"
+                                     RelativeLayout.WidthConstraint="80"
+                                     RelativeLayout.HeightConstraint="80"
+                                     Padding="20">
+
+                <pancakeview:PancakeView.Shadow>
+                    <pancakeview:DropShadow Color="#000000" Offset="0,0" BlurRadius="20"/>
+                </pancakeview:PancakeView.Shadow>
+                <ffimageloadingsvg:SvgCachedImage
+                                Margin="0,0,0,0"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                HeightRequest="40"
+                                WidthRequest="30"
+                                Aspect="AspectFit"
+                                Source="resource://PruebaEVERTEC.Resources.Icons.partly-sunny-outline.svg"/>
+
+            </pancakeview:PancakeView>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

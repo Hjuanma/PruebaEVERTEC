@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="PruebaEVERTEC.Views.CustomViews.CircularImageView"
+             x:Name="circularImg"
+             SizeChanged="ContentView_SizeChanged">
+    <ContentView.Content>
+        <pancakeview:PancakeView x:Name="mainFrame"
+                                 BindingContext="{x:Reference circularImg}"
+                                 Padding="0"
+                                 VerticalOptions="Fill"
+                                 HorizontalOptions="Fill"
+                                 CornerRadius="100">
+            <pancakeview:PancakeView.Border>
+                <pancakeview:Border Color="White"
+                                    Thickness="7" />
+            </pancakeview:PancakeView.Border>
+            <ff:CachedImage Source="{Binding ImageSource}" HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Aspect="AspectFill" />
+        </pancakeview:PancakeView>
+    </ContentView.Content>
+</ContentView>

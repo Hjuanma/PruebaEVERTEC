@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PruebaEVERTEC.Views.CustomViews.LabeledSwitch"
+    x:Name="content">
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTapped" />
+    </ContentView.GestureRecognizers>
+    <ContentView.Content>
+
+        <Grid InputTransparent="True" ColumnDefinitions="*,Auto" BindingContext="{x:Reference content}">
+
+            <Label Text="{Binding Title}" VerticalOptions="Center" Style="{StaticResource LabelMedium}"/>
+
+            <Switch IsToggled="{Binding IsChecked, Mode=TwoWay}" Style="{StaticResource SwitchStyle}"
+                    VerticalOptions="Center"
+                    Grid.Column="1" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>
+

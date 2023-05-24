@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customviews="clr-namespace:PruebaEVERTEC.Views.CustomViews"
+    NavigationPage.HasNavigationBar="false"
+    xmlns:models="clr-namespace:PruebaEVERTEC.Models"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="PruebaEVERTEC.Views.Pages.LoginPage"
+    BackgroundColor="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark},
+                                Light={StaticResource WindowBackgroundColor}}">
+    <ContentPage.Content>
+
+
+        <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+
+            <Grid 
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.45}">
+
+                <ff:CachedImage
+                    Source="resource://PruebaEVERTEC.Resources.Images.personaje-femenino-3d.webp"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Aspect="Fill"/>
+
+                <StackLayout Margin="20" VerticalOptions="End" HorizontalOptions="Start" Spacing="-8">
+                    <Label Text="Bienvenido a" VerticalTextAlignment="End" VerticalOptions="End"  Style="{StaticResource LabelLarge}" FontAttributes="Bold"/>
+                    <Label Text="Evertec" VerticalTextAlignment="Start" VerticalOptions="Start" Style="{StaticResource LabelTitle}" FontAttributes="Bold"/>
+
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout
+                 Padding="20,0"
+                 Spacing="15"
+                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.47}"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.52}" >
+                <customviews:CustomEntryView
+                Placeholder="Email:"
+                Text="{Binding UserName}"/>
+
+                <customviews:CustomEntryView
+                Placeholder="PassWord:"
+                Text="{Binding PassWord}"
+                IsPassword="True"/>
+
+                <Label Text="Olvidaste tu contraseña?" Margin="20,-5,0,0"  Style="{StaticResource LabelMedium}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnLoginCommand}"
+                                              CommandParameter="{x:Static models:LoginActions.Recover}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <customviews:CustomBottonView
+                VerticalOptions="CenterAndExpand"
+                Text="Login"
+                TextColor="White"
+                BtnColor="{StaticResource primaryColor}"
+                BtnCommand="{Binding OnLoginCommand}"
+                BtnCommandParam="{x:Static models:LoginActions.Login}"
+                IsBusy="{Binding IsBusy}"/>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Fill" Spacing="10">
+
+                    <customviews:CustomBottonView
+                    VerticalOptions="Center"
+                    IconPos="Center"
+                    ImageSource="resource://PruebaEVERTEC.Resources.Icons.logo-instagram.svg"
+                    BtnColor="{StaticResource SystemGray5}"
+                    BtnCommand="{Binding OnLoginCommand}"
+                    BtnCommandParam="{x:Static models:LoginActions.Instagram}"
+                    IsBusy="{Binding IsBusy}"/>
+
+                    <customviews:CustomBottonView
+                    VerticalOptions="Center"
+                    IconPos="Center"
+                    ImageSource="resource://PruebaEVERTEC.Resources.Icons.social-facebook.svg"
+                    BtnColor="{StaticResource SystemGray5}"
+                    BtnCommand="{Binding OnLoginCommand}"
+                    BtnCommandParam="{x:Static models:LoginActions.FaceBook}"
+                    IsBusy="{Binding IsBusy}"/>
+
+                    <customviews:CustomBottonView
+                    VerticalOptions="Center"
+                    IconPos="Center"
+                    ImageSource="resource://PruebaEVERTEC.Resources.Icons.logo-google.svg"
+                    BtnColor="{StaticResource SystemGray5}"
+                    BtnCommand="{Binding OnLoginCommand}"
+                    BtnCommandParam="{x:Static models:LoginActions.Google}"
+                    IsBusy="{Binding IsBusy}"/>
+
+                </StackLayout>
+
+                <BoxView BackgroundColor="{StaticResource SystemGray5}" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/>
+
+                <customviews:CustomBottonView
+                    VerticalOptions="CenterAndExpand"
+                    Text="Registrarme"
+                    TextColor="{StaticResource SystemGray3Dark}"
+                    BtnColor="{StaticResource SystemGray4}"
+                    BtnCommand="{Binding OnLoginCommand}"
+                    BtnCommandParam="{x:Static models:LoginActions.SingUp}"
+                    IsBusy="{Binding IsBusy}"/>
+
+            </StackLayout>
+
+
+
+        </RelativeLayout>
+
+    </ContentPage.Content>
+</ContentPage>
+

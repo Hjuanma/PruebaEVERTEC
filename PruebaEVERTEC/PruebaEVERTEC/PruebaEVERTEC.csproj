@@ -1,0 +1,117 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+		<UserSecretsId>86bcf92f-3fcd-4240-9f03-a8519a7403d4</UserSecretsId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+<ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="1.1.2" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Remove="Models\" />
+    <None Remove="Services\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Views\" />
+    <None Remove="Views\Pages\" />
+    <None Remove="ViewModels\Pages\" />
+    <None Remove="Views\CustomViews\" />
+    <None Remove="Views\Renderers\" />
+    <None Remove="Resources\" />
+    <None Remove="Resources\Images\" />
+    <None Remove="Resources\Images\istockphoto-1226886125-170667a.jpg" />
+    <None Remove="Resources\Images\personaje-femenino-3d.webp" />
+    <None Remove="Resources\Icons\" />
+    <None Remove="Resources\Icons\logo-google.svg" />
+    <None Remove="Resources\Icons\logo-instagram.svg" />
+    <None Remove="Resources\Icons\social-facebook.svg" />
+    <None Remove="Services\Interfaces\" />
+    <None Remove="Resources\Fonts\" />
+    <None Remove="Resources\Icons\camera-outline.svg" />
+    <None Remove="Resources\Icons\contacts-svgrepo-com.svg" />
+    <None Remove="Resources\Icons\partly-sunny-outline.svg" />
+    <None Remove="Helpers\" />
+    <None Remove="Resources\Icons\eye-outline.svg" />
+    <None Remove="Resources\Icons\eye-off-outline.svg" />
+    <None Remove="Resources\Resx\" />
+    <None Remove="Resources\Resx\AppResources.en" />
+    <None Remove="Resources\Resx\Resources.en" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
+    <Folder Include="Views\Renderers\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\Icons\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Resources\Fonts\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Resources\Resx\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="appsettings.json">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Resources\Images\istockphoto-1226886125-170667a.jpg" />
+    <EmbeddedResource Include="Resources\Images\personaje-femenino-3d.webp" />
+    <EmbeddedResource Include="Resources\Icons\logo-google.svg" />
+    <EmbeddedResource Include="Resources\Icons\logo-instagram.svg" />
+    <EmbeddedResource Include="Resources\Icons\social-facebook.svg" />
+    <EmbeddedResource Include="Resources\Icons\camera-outline.svg" />
+    <EmbeddedResource Include="Resources\Icons\contacts-svgrepo-com.svg" />
+    <EmbeddedResource Include="Resources\Icons\partly-sunny-outline.svg" />
+    <EmbeddedResource Include="Resources\Icons\eye-outline.svg" />
+    <EmbeddedResource Include="Resources\Icons\eye-off-outline.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Resx\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Resx\AppResources.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Resx\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Resx\AppResources.en.Designer.cs">
+      <DependentUpon>AppResources.en.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+		<ProjectReference Include="..\..\PruebaEVERTEC.Application\PruebaEVERTEC.Application.csproj" />
+		<ProjectReference Include="..\..\PruebaEVERTEC.Infrastructure\PruebaEVERTEC.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\CustomViews\CircularImageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Pages\ContactsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

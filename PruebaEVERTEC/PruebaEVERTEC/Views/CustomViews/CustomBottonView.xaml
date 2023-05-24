@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:panckaeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="PruebaEVERTEC.Views.CustomViews.CustomBottonView"
+    x:Name="Content">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <xct:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+
+        <panckaeView:PancakeView
+            BindingContext="{x:Reference Content}"
+            CornerRadius="25"
+            Padding="0"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            BackgroundColor="{Binding BtnColor, Mode=OneWay}"
+            xct:TouchEffect.PressedOpacity="0.5"
+            xct:TouchEffect.Command="{Binding BtnCommand, Mode=OneWay}"
+            xct:TouchEffect.CommandParameter="{Binding BtnCommandParam, Mode=OneWay}">
+
+            <Grid
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="FillAndExpand">
+
+                <Grid.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="10" />
+                        <On Platform="Android, UWP" Value="0,0" />
+                    </OnPlatform>
+                </Grid.Margin>
+
+                <Grid x:Name="stack"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="Center">
+
+                    <ffimageloadingsvg:SvgCachedImage
+                        HorizontalOptions="{Binding IconPos}"
+                        VerticalOptions="Center"
+                        Aspect="AspectFit"
+                        HeightRequest="30"
+                        Source="{Binding ImageSource, Mode=OneWay}">
+
+                        <ffimageloadingsvg:SvgCachedImage.Triggers>
+                            <DataTrigger TargetType="ffimageloadingsvg:SvgCachedImage"
+                                         Binding="{Binding Source={RelativeSource Self}, Path=Source, Converter={StaticResource IsNullOrEmptyConverter}}"
+                                         Value="true">
+
+                                <Setter Property="WidthRequest" Value="0" />
+
+                            </DataTrigger>
+
+                        </ffimageloadingsvg:SvgCachedImage.Triggers>
+
+                    </ffimageloadingsvg:SvgCachedImage>
+
+                    <Label
+                        Text="{Binding Text, Mode=OneWay}"
+                        TextColor="{Binding TextColor}"
+                         Style="{StaticResource LabelMedium}"
+                        FontAttributes="Bold"
+                        VerticalTextAlignment="Center"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+
+                </Grid>
+
+                <ActivityIndicator Opacity="0"
+                                   x:Name="InnerActivityIndicator"
+                                   IsRunning="True"
+                                   IsVisible="True"
+                                   HorizontalOptions="CenterAndExpand"
+                                   Visual="Material"
+                                   Color="{Binding TextColor}">
+                    <ActivityIndicator.Scale>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS">1</On>
+                            <On Platform="Android">0.7</On>
+                        </OnPlatform>
+                    </ActivityIndicator.Scale>
+                </ActivityIndicator>
+
+
+            </Grid>
+
+        </panckaeView:PancakeView>
+
+    </ContentView.Content>
+</ContentView>
+
